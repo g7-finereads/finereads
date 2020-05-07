@@ -1,10 +1,11 @@
 require "sinatra"
 require "sinatra/reloader"
 require "lazyrecord"
+require "http"
 
 helpers do
 end
 
 get "/" do
-  "Group 7"
+  erb :index, layout: :layout
 end
