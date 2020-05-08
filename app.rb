@@ -66,6 +66,16 @@ end
 helpers do
 end
 
+set :static_cache_control, [:public, max_age: 1]
+
+get "/:page?" do
+  cache_control :public, max_age: 1
+  if params["page"].nil?
+    erb :index, layout: :layout
+  else
+    erb params["page"].to_sym, layout: :layout
+  end
+
 get '/' do
   erb :index
 end
@@ -74,6 +84,7 @@ get '/search' do
   erb :search_page
 end
 
+<<<<<<< HEAD
 get '/books' do
   test = Searchbook.new(params['q'])
   array = test.search['items']
@@ -81,4 +92,8 @@ get '/books' do
   @arrayitems = deploy.info_books
   @arrayitems = @arrayitems.to_a
   erb :search_page
+=======
+get '/list-books' do
+  erb '/books/list_books'.to_sym
+>>>>>>> 9258e1407fa77ccd1c3f45899ae4a6735e458aa7
 end
