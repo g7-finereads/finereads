@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.book-detail {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1024px;
+  margin: 71px auto;
+}
+
+.book-description {
+  max-width: 455px;
+  margin-left: 22px;
+}
+
+.book-description h1 {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 27px;
+  color: #1a202c;
+}
+.book-description .book-author {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #4a5568;
+}
+
+.book-description .book-text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1a202c;
+  margin-top: 19px;
+  margin-bottom: 28px;
+}
+.book-description .book-buy {
+  padding: 8px 14px;
+  background-color: #9ae6b4;
+  color: #1a202c;
+  font-size: 18px;
+  line-height: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  max-width: 217px;
+  margin-left: auto;
+}
+
+.book-logo .book-read {
+  padding: 8px 14px;
+  background-color: #38a169;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 25px;
+  text-decoration: none;
+  font-weight: normal;
+  display: flex;
+  justify-content: center;
+  max-width: 110px;
+  margin: 12px auto;
+}
+
+.book-logo .book-mark {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #2b6cb0;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
