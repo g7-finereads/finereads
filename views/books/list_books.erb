@@ -1,0 +1,13 @@
+<div class="list-books">
+  <% unless @arrayitems.nil? %>
+    <% @arrayitems.each_slice(4) do |book|%>
+      <ul class="row">
+        <% book.each do |thing| %>
+          <% @title = thing[1][1] %>
+          <% @img_link = thing[1][0] %>
+          <li class="list-item"><%= erb '/books/book_card'.to_sym %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+<%end %>
