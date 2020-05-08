@@ -57,8 +57,7 @@
     margin: 40px auto;
   }
   .my-books-item {
-    width: 100%;
-    grid-template-columns: repeat(2, 50%);
+    grid-template-columns: repeat(2, 200px);
     grid-template-rows: repeat(2, auto);
     text-align: center;
   }
