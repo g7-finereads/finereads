@@ -28,8 +28,9 @@ class DeployBooks
   end
 
   def return_images(book)
+    default_img = '/images/image-default.png'
     img = book['volumeInfo']['imageLinks']['thumbnail']
-    img.nil? ? '/public/images/image-default.png' : img
+    img = img.nil? ? default_img : img
   end
 
   def return_any(element, book)
@@ -85,10 +86,11 @@ get '/search' do
 end
 
 get '/books' do
-  test = Searchbook.new(params['q'])
+  test = Searchbook.new(params['q'].gsub(/\s+/, ''))
   array = test.search['items']
   deploy = DeployBooks.new(array)
   @arrayitems = deploy.info_books
   @arrayitems = @arrayitems.to_a
+  @arrayitems.slice!(8..-1)
   erb :search_page
 end

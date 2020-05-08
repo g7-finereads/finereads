@@ -38,7 +38,7 @@
 }
 @media (max-width: 930px) {
   .list-books ul {
-    max-width: 650px;
+    max-width: 500px;
     margin: 0 auto;
   }
 }
