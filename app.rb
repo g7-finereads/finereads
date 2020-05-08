@@ -65,8 +65,10 @@ class Deployment
 end
 
 helpers do
+  set :static_cache_control, [:public, max_age: 1]
 end
 
+<<<<<<< HEAD
 set :static_cache_control, [:public, max_age: 1]
 
 # get '/:page?' do
@@ -77,6 +79,17 @@ set :static_cache_control, [:public, max_age: 1]
 #     erb params['page'].to_sym, layout: :layout
 #   end
 # end
+=======
+get '/:page?' do
+  cache_control :public, max_age: 1
+  if params['page'].nil?
+    erb :index
+  else
+    erb params['page'].to_sym
+  end
+end
+
+>>>>>>> robertmedina
 get '/' do
   erb :index
 end
