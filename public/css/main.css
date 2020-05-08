@@ -1,0 +1,20 @@
+/* This is the main sheet, all styles include here */
+
+@import url("books.css");
+@import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600,700&display=swap");
+
+/* Reset all object's margin and padding*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
