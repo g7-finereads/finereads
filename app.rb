@@ -11,12 +11,8 @@ class Searchbook
     @base_url = "https://www.googleapis.com/books/v1/volumes?q=#{query}"
   end
 
-  def request
-    HTTP.headers(accept: 'application/json')
-  end
-
   def search
-    result = request.get(@base_url)
+    result = HTTP.headers(accept: 'application/json').get(@base_url)
     books = result
     books.parse
    end
@@ -28,8 +24,11 @@ class DeployBooks
   end
 
   def return_images(book)
-    img = book['volumeInfo']['imageLinks']['thumbnail']
-    img.nil? ? '/public/images/image-default.png' : img
+    default_img = '/images/image-default.png'
+    unless book['volumeInfo']['imageLinks'].nil?
+      img = book['volumeInfo']['imageLinks']['thumbnail']
+    end
+    img = img.nil? ? default_img : img
   end
 
   def return_any(element, book)
@@ -39,56 +38,44 @@ class DeployBooks
 
   def return_all(book)
     array = []
-    array.push(return_images(book))
-    array.push(return_any('title', book))
-    array.push(return_any('subtitle', book))
-    array.push(return_any('authors', book))
-    array.push(return_any('description', book))
-    array.push(return_any('pageCount', book))
-    array.push(return_any('categories', book))
+    array << return_images(book) << return_any('title', book)
+    array << return_any('subtitle', book) << return_any('authors', book)
+    array << return_any('description', book) << return_any('pageCount', book)
+    array << return_any('categories', book)
     array
   end
 
   def info_books
     final = {}
-    @items.each_with_index do |book, index|
-      final[index + 1] = return_all(book)
-    end
+    @items.each { |book| final[book['id']] = return_all(book) }
     final
-  end
-end
-class Deployment
-  def initialize(array_final)
-    @array = array_final
   end
 end
 
 helpers do
   set :static_cache_control, [:public, max_age: 1]
+  def findbooks
+    test = Searchbook.new(params['q'].gsub(/\s+/, '%20'))
+    array = test.search['items']
+    deploy = DeployBooks.new(array)
+    @arrayitems = deploy.info_books.to_a
+    @arrayitems.slice!(8..-1)
+    @arrayitems
+  end
 end
 
 get '/:page?' do
   cache_control :public, max_age: 1
-  if params['page'].nil?
+  what_page = params['page']
+  case
+  when what_page.nil?
     erb :index
-  else
-    erb params['page'].to_sym
+  when what_page == 'books' || what_page == 'search'
+    return erb :search_page if params['q'].empty?
+
+    @arrayitems = findbooks
+    erb :search_page
+  when what_page == 'my_books'
+    erb :my_books
   end
-end
-
-get '/' do
-  erb :index
-end
-
-get '/search' do
-  erb :search_page
-end
-
-get '/books' do
-  test = Searchbook.new(params['q'])
-  array = test.search['items']
-  deploy = DeployBooks.new(array)
-  @arrayitems = deploy.info_books
-  @arrayitems = @arrayitems.to_a
-  erb :search_page
 end

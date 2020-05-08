@@ -1,0 +1,13 @@
+<% array = [1,2,3,4,5,6,7,8] %>
+<div class="list-mybooks">
+  <h1 class="my-books-title">My books</h1>
+  <div class="header">
+    <span class="header-cover">Cover</span>
+    <span class="header-title">Title</span>
+    <span class="header-author">Author</span>
+    <span class="header-status">Status</span>
+    <span class="header-date">Date added</span>
+  </div>
+  <% array.each do |itemcard| %> <%= erb '/books/card_my_books'.to_sym,local:{}
+  %> <% end %>
+</div>
