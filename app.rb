@@ -85,11 +85,7 @@ get '/search' do
   erb :search_page
 end
 get '/my_books' do
-  @books = if params['add'].nil?
-             Book.all
-           else
-             savebook(params['add'])
-           end
+  @books = params['add'].nil? ? Book.all : savebook(params['add'])
   erb :my_books
 end
 
