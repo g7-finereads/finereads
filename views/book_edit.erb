@@ -1,13 +1,13 @@
-  <% currentbook = Book.find(@id) %>
+<% currentbook = Book.find(@id) %>
 <div class="book-details">
   <div class="book-details__image">
-  <% p currentbook.image %>
-    <img src="<%= currentbook.image%>">
+    <% p currentbook.image %>
+    <img src="<%= currentbook.image %>">
   </div>
   <div class="book-details__info">
     <div>
-      <h1 class="book-details__info__title"><%=currentbook.title %></h1>
-      <h2 class="book-details__info__author">by <%=currentbook.authors.join %> </h2>
+      <h1 class="book-details__info__title"><%= currentbook.title %></h1>
+      <h2 class="book-details__info__author">by <%= currentbook.authors.join %> </h2>
     </div>
     <div class="book-details__info__form">
       <form method="post">
@@ -15,14 +15,14 @@
         <select id="reading_status" name ="status">
           <% array_options = ['Reading', 'Not read', 'Want to read'] %>
           <% status = currentbook.status.capitalize.gsub(/_/," ") %>
-          <option value="<%=status %>"><%=status%></option>
+          <option value="<%= status %>"><%= status %></option>
           <% array_options.delete(status) %>
           <% array_options.each do |option| %>
             <option value="<%= option %>"><%= option %></option>
           <% end %>
         </select>
         <label for="notes">Notes</label>
-        <textarea id="notes" name="notes" id="notes" placeholder='<%= currentbook.notes %>' cols="50" rows="6"></textarea>
+        <textarea id="notes" name="notes" id="notes" cols="50" rows="6"><%= currentbook.notes %></textarea>
         <input type="hidden" name="id" value="<%= @id %>" />
         <button type="submit">Save</button>
       </form>

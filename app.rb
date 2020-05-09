@@ -29,7 +29,7 @@ class DeployBooks
     unless book['volumeInfo']['imageLinks'].nil?
       img = book['volumeInfo']['imageLinks']['thumbnail']
     end
-    img = img.nil? ? default_img : img
+    img.nil? ? default_img : img
   end
 
   def return_any(element, book)
@@ -77,13 +77,16 @@ end
 get '/' do
   erb :index
 end
+
 get '/books' do
   @arrayitems = findbooks unless params['q'].nil? || params['q'] == ''
   erb :search_page
 end
+
 get '/search' do
   erb :search_page
 end
+
 get '/my_books' do
   @books = params['add'].nil? ? Book.all : savebook(params['add'])
   erb :my_books

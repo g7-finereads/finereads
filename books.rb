@@ -28,7 +28,7 @@ class CreateBook
     unless book['volumeInfo']['imageLinks'].nil?
       img = book['volumeInfo']['imageLinks']['thumbnail']
     end
-    img = img.nil? ? default_img : img
+    img.nil? ? default_img : img
   end
 
   def add_book(id)
@@ -40,5 +40,4 @@ class CreateBook
     image = return_images(response)
     Book.create(title: title, authors: authors, id: id, description: description, image: image)
   end
-
 end
