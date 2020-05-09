@@ -1,15 +1,18 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   padding: 0;
   margin: 0;
   background-color: #fffaf0;
   font-family: "nunito", sans-serif;
 }
+
 li {
   list-style: none;
 }
+
 a {
   text-decoration: none;
 }
@@ -22,18 +25,26 @@ a {
   max-width: 1024px;
   margin: 0px auto;
 }
+
 .navbar-logo {
   font-family: "Roboto Slab", serif;
   font-size: 30px;
   font-weight: 200;
   margin-top: 13px;
 }
+
+.navbar-logo a {
+  color: black;
+}
+
 .navbar-main {
   display: flex;
 }
+
 .navbar-item {
   margin-left: 20px;
 }
+
 .navbar-books {
   font-size: 18px;
   color: #000000;
