@@ -94,12 +94,12 @@ get '/my_books' do
 end
 
 get '/action?' do
-  id = params['id']
+  @id = params['id']
   action = params['action']
   if action == 'edit'
     erb :book_edit
   else
-    deletebook(id)
+    deletebook(@id)
     @books = Book.all
     erb :my_books
   end
