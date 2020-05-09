@@ -4,6 +4,7 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'lazyrecord'
 require 'http'
+require_relative 'books'
 
 class Searchbook
   def initialize(query)
@@ -76,6 +77,12 @@ get '/:page?' do
     @arrayitems = findbooks
     erb :search_page
   when what_page == 'my_books'
-    erb :my_books
+    id = params['add']
+
   end
+end
+get '/test' do
+  try = CreateBook.new
+  p try.add_book('_i6bDeoCQzsC')
+  p try
 end
