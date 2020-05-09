@@ -1,27 +1,16 @@
+<% currentbook = Book.find(@id) %>
 <div class="book-detail">
-    <div class="book-logo">
-        <img src="assets/book.png" />
-        <a href="" class="book-read">Want to Read</a>
-        <a href="" class="book-mark">Mark as read</a>
-    </div>
-    <div class="book-description">
-        <h1>Girl, Stop Apologizing: A Shame-Free Plan for Embracing and Achieving Your Goals</h1>
-        <p class="book-author">by Rachel Hollis</p>
-        <p class="book-text">“I believe we can change the world. But first, we’ve got to stop living in fear of being judged for who
-            we are.”<br>
-            Rachel Hollis has seen it too often: women not living into their full potential. They feel a tugging on
-            their hearts for something more, but they’re afraid of embarrassment, of falling short of perfection, of
-            not being enough.
-            <br>
-            <br>
-            In Girl, Stop Apologizing, #1 New York Times bestselling author and founder of a multimillion-dollar
-            media company, Rachel Hollis sounds a wake-up call. She knows that many women have been taught to define
-            themselves in light of other people—whether as wife, mother, daughter, or<br>employee—instead of learning
-            how to own who they are and what they want. With a challenge to women everywhere to stop talking
-            themselves out of their dreams, Hollis identifies the excuses to let go of, the behaviors to adopt, and
-            the skills to acquire on the path to growth, confidence, and believing in yourself.</p>
-            <a href="/search" class="book-buy">Buy for 63.36 PEN
-                <img src="assets/buy.svg">
-            </a>
-
-    </div>
+  <div class="book-logo">
+    <img src="<%= currentbook.image %>" />
+    <a href="" class="book-read">Want to Read</a>
+    <a href="" class="book-mark">Mark as read</a>
+  </div>
+  <div class="book-description">
+    <h1><%= currentbook.title %></h1>
+    <p class="book-author">by <%= currentbook.authors.join %></p>
+    <p class="book-text"><%= currentbook.description %></p>
+    <a href="/search" class="book-buy">Buy for 63.36 PEN
+      <img src="assets/buy.svg">
+    </a>
+  </div>
+</div>
