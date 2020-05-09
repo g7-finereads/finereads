@@ -15,8 +15,8 @@
     <!-- search -->
   </head>
   <body>
-    <%= erb :header %>
+    <%= erb :header unless request.path_info == '/' %>
     <%= yield %>
-    <%= erb :footer %>
+    <%= erb :footer unless request.path_info == '/' %>
   </body>
 </html>
