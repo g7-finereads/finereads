@@ -16,7 +16,7 @@ class Searchbook
     result = HTTP.headers(accept: 'application/json').get(@base_url)
     books = result
     books.parse
-   end
+  end
 end
 
 class DeployBooks
