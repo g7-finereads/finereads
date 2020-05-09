@@ -1,0 +1,83 @@
+.book-details {
+  display: flex;
+  width: 50%;
+  margin: 50px auto auto;
+}
+
+.book-details__image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 230px;
+  width: 153px;
+}
+
+.book-details__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-details__info div {
+  margin: 2vh;
+}
+
+.book-details__info__title {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 27px;
+  color: #1a202c;
+}
+
+.book-details__info__author {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 22px;
+  color: #4a5568;
+}
+
+.book-details__info__form * {
+  display: block;
+  margin: 1vh 0;
+}
+
+.book-details__info__form label {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #4a5568;
+}
+
+.book-details__info__form textarea {
+  background: #ffffff;
+  border: 1px solid #718096;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.book-details__info__form button {
+  float: right;
+  background: #9ae6b4;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  color: #1a202c;
+  padding: 8px 14px;
+  border: none;
+}
+
+@media (max-width: 769px) {
+  .book-details {
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .book-details__info__form select {
+    display: block;
+    margin: 0 auto;
+  }
+}
