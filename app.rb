@@ -32,6 +32,7 @@ class DeployBooks
     img = img.nil? ? default_img : img
   end
 
+<<<<<<< HEAD
   def return_any(element, book)
     query = book['volumeInfo'][element]
     query.nil? ? "Unknown #{element}" : query
@@ -63,6 +64,16 @@ helpers do
     @arrayitems.slice!(8..-1)
     @arrayitems
   end
+=======
+# get "/:page?" do
+#   cache_control :public, max_age: 1
+#   if params["page"].nil?
+#     erb :index, layout: :layout
+#   else
+#     erb params["page"].to_sym, layout: :layout
+#   end
+# end
+>>>>>>> 34a2f9931c87394cfdc2d0385979b02902ed3395
 
   def savebook(id)
     CreateBook.new.add_book(id)
@@ -82,6 +93,7 @@ get '/books' do
   erb :search_page
 end
 get '/search' do
+<<<<<<< HEAD
   erb :search_page
 end
 get '/my_books' do
@@ -112,4 +124,15 @@ end
 
 post '/action' do
   erb :my_books
+=======
+  erb :search
+end
+
+# get '/search2' do
+#   erb '/books/book_card'.to_sym
+# end
+
+get '/list-books' do
+  erb :list_books
+>>>>>>> 34a2f9931c87394cfdc2d0385979b02902ed3395
 end
