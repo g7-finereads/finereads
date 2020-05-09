@@ -111,5 +111,10 @@ get '/details?' do
 end
 
 post '/action' do
-  erb :my_books
+  p params
+  book = Book.find(params['id'])
+  book.status = params['status']
+  book.notes = params['notes']
+  book.save
+  redirect to('/my_books')
 end

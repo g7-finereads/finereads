@@ -4,7 +4,7 @@ require 'lazyrecord'
 require 'http'
 
 class Book < LazyRecord
-  attr_accessor :title, :authors, :id, :description, :image, :date, :status, :owned
+  attr_accessor :title, :authors, :id, :description, :image, :date, :status, :owned, :notes
   def initialize(title:, authors:, id:, description:, image:)
     @title = title
     @authors = authors
@@ -16,6 +16,7 @@ class Book < LazyRecord
     @status = 'not_read'
   end
 end
+
 class CreateBook
   def return_any(element, book)
     query = book['volumeInfo'][element]
@@ -40,16 +41,4 @@ class CreateBook
     Book.create(title: title, authors: authors, id: id, description: description, image: image)
   end
 
-  def change_status(_id, status)
-    case status
-    when 'want_to_read' then @status = 'want_to_read'
-    when 'reading' then @status = 'reading'
-    when 'read' then @status = 'read'
-    end
-  end
-
-  def update_notes(id, notes)
-    book = Book.find(id)
-    @notes = notes
-  end
 end
