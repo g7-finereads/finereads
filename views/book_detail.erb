@@ -9,7 +9,7 @@
     <h1><%= currentbook.title %></h1>
     <p class="book-author">by <%= currentbook.authors.join %></p>
     <p class="book-text"><%= currentbook.description %></p>
-    <a href="/search" class="book-buy">Buy for 63.36 PEN
+    <a href="https://play.google.com/store/books/details?id=<%= currentbook.id %> " class="book-buy">Buy for 63.36 PEN
       <img src="assets/buy.svg">
     </a>
   </div>
