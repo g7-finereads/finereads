@@ -104,3 +104,8 @@ get '/action?' do
     erb :my_books
   end
 end
+
+get '/details?' do
+  id = params['id']
+  erb 'books/book_details'.to_sym
+end
