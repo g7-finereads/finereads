@@ -1,0 +1,30 @@
+      <% currentbook = Book.find(@id) %>
+<div class="book-details">
+  <div class="book-details__image">
+    <img src="<%= currentbook.image%>">
+  </div>
+  <div class="book-details__info">
+    <div>
+      <h1 class="book-details__info__title"><%=currentbook.title %></h1>
+      <h2 class="book-details__info__author">by <%=currentbook.authors.join %> </h2>
+    </div>
+    <div class="book-details__info__form">
+      <form method="post">
+        <% p currentbook.status %>
+        <label for="reading_status">reading status </label>
+        <select id="reading_status">
+          <% array_options = ['Reading', 'Not read', 'Want to read'] %>
+          <% status = currentbook.status.capitalize.gsub(/_/," ") %>
+          <option value="<%=status %>"><%=status%></option>
+          <% array_options.delete(status) %>
+          <% array_options.each do |option| %>
+            <option value="<%= option %>"><%= option %></option>
+          <% end %>
+        </select>
+        <label for="notes">Notes</label>
+        <textarea id="notes" name="notes" id="notes" cols="50" rows="6"></textarea>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+</div>

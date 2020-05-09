@@ -31,7 +31,7 @@
 .header span.header-date,
 .header span.header-author {
   text-align: left;
-  padding: 0 6px;
+  padding: 0 15px;
 }
 .image img {
   width: 70px;
@@ -42,8 +42,10 @@
   line-height: 19px;
   color: #ed8936;
   margin: 0 auto;
-  padding: 0 6px;
+  padding: 0 10px;
   text-align: center;
+  display: flex;
+  align-items: center;
 }
 .my-books-item span {
   color: #1a202c;
@@ -52,7 +54,10 @@
   align-items: center;
   justify-content: center;
 }
-
+.icons {
+  display: flex;
+  align-items: center;
+}
 .icons a {
   cursor: pointer;
 }

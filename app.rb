@@ -97,7 +97,7 @@ get '/action?' do
   id = params['id']
   action = params['action']
   if action == 'edit'
-    erb :edit
+    erb :book_edit
   else
     deletebook(id)
     @books = Book.all
@@ -106,6 +106,10 @@ get '/action?' do
 end
 
 get '/details?' do
-  id = params['id']
-  erb 'books/book_details'.to_sym
+  @id = params['id']
+  erb :book_detail
+end
+
+post '/action' do
+  erb :my_books
 end

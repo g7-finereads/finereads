@@ -7,7 +7,10 @@
 .book-details__image {
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin: 20px;
+  margin-top: 0;
+}
+.book-details__image img {
   height: 230px;
   width: 153px;
 }
@@ -47,6 +50,7 @@
   line-height: 16px;
   text-transform: uppercase;
   color: #4a5568;
+  font-family: "Nunito", sans-serif;
 }
 
 .book-details__info__form textarea {
@@ -66,7 +70,18 @@
   padding: 8px 14px;
   border: none;
 }
-
+#reading_status {
+  background: #edf2f7;
+  height: 40px;
+  font-size: 16px;
+  font-family: "Nunito", sans-serif;
+  padding: 7px 12px;
+  margin: 7px 20px 12px 0;
+}
+#notes {
+  padding: 10px;
+  font-family: "Nunito", sans-serif;
+}
 @media (max-width: 769px) {
   .book-details {
     width: 80%;
@@ -78,6 +93,9 @@
 
   .book-details__info__form select {
     display: block;
+    margin: 0 auto;
+  }
+  #reading_status {
     margin: 0 auto;
   }
 }
