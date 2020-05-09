@@ -10,10 +10,10 @@
   font-weight: normal;
 }
 .my-books-item {
-  width: fit-content;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(6, auto);
+  grid-template-columns: 70px 184px 191px 95px 150px 54px;
+  width: fit-content;
   justify-content: center;
   padding: 19px 0 12px 0;
   border-top: 1px solid rgba(113, 128, 150, 0.8);
@@ -22,62 +22,85 @@
   display: grid;
   margin-top: 14px;
   padding: 12px 0;
-  grid-template-columns: 70px 184px 95px 191px 100px 54px;
+  grid-template-columns: 70px 184px 191px 95px 150px 54px;
 }
 .header span {
   text-align: center;
+}
+.header span.header-status,
+.header span.header-date,
+.header span.header-author {
+  text-align: left;
+  padding: 0 6px;
 }
 .image img {
   width: 70px;
   height: 105px;
 }
 .my-books-item p {
-  font-size: 14px;
+  font-size: 18px;
   line-height: 19px;
   color: #ed8936;
-  max-width: 116px;
-  margin: 0 32px 0 36px;
+  margin: 0 auto;
+  padding: 0 6px;
+  text-align: center;
 }
 .my-books-item span {
   color: #1a202c;
+  padding: 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.status {
-  margin: 0 61px 0 36px;
-}
-.icons {
-  margin-left: 19px;
-}
+
 .icons a {
-  margin: 2px;
   cursor: pointer;
 }
+.icons a img {
+  margin: 0 4px;
+  width: 18px;
+  height: 18px;
+}
+
 @media (max-width: 768px) {
   .list-mybooks {
     width: 90%;
     margin: 40px auto;
   }
+  .my-books-title {
+    margin: 0 auto;
+  }
+
   .my-books-item {
-    grid-template-columns: repeat(2, 200px);
+    grid-template-columns: repeat(2, 180px);
     grid-template-rows: repeat(2, auto);
     text-align: center;
   }
 
-  .status {
+  .my-books-item p {
+    font-size: 18px;
     margin: 0 auto;
-    text-align: center;
+  }
+  span.status {
+    text-align: left;
+    grid-row: 2/3;
+    grid-column: 2/3;
+    display: flex;
+    justify-content: start;
+    padding: 0 10px;
   }
   div.icons {
     display: flex;
     justify-content: flex-end;
-    margin-right: 20px;
+    grid-row: 2/3;
+    grid-column: 2/3;
   }
-  div.icons a {
-    margin: 5px;
-  }
+
   .list-mybooks > .header {
     grid-template-columns: 50% 50%;
     grid-template-rows: repeat(3, auto);
-    width: 100%;
+    width: 360px;
+    margin: 0 auto;
   }
 
   .header span {

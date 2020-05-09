@@ -63,26 +63,44 @@ helpers do
     @arrayitems.slice!(8..-1)
     @arrayitems
   end
-end
 
-get '/:page?' do
-  cache_control :public, max_age: 1
-  what_page = params['page']
-  case
-  when what_page.nil?
-    erb :index
-  when what_page == 'books' || what_page == 'search'
-    return erb :search_page if params['q'].empty?
+  def savebook(id)
+    CreateBook.new.add_book(id)
+    Book.all
+  end
 
-    @arrayitems = findbooks
-    erb :search_page
-  when what_page == 'my_books'
-    id = params['add']
-
+  def deletebook(id)
+    Book.delete(id)
   end
 end
-get '/test' do
-  try = CreateBook.new
-  p try.add_book('_i6bDeoCQzsC')
-  p try
+
+get '/' do
+  erb :index
+end
+get '/books' do
+  @arrayitems = findbooks unless params['q'].nil? || params['q'] == ''
+  erb :search_page
+end
+get '/search' do
+  erb :search_page
+end
+get '/my_books' do
+  @books = if params['add'].nil?
+             Book.all
+           else
+             savebook(params['add'])
+           end
+  erb :my_books
+end
+
+get '/action?' do
+  id = params['id']
+  action = params['action']
+  if action == 'edit'
+    erb :edit
+  else
+    deletebook(id)
+    @books = Book.all
+    erb :my_books
+  end
 end
