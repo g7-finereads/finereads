@@ -96,9 +96,8 @@ end
 
 get '/search' do
   @search_by = params['search_by']
-  if @search_by == 'All'
     @arrayitems = findbooks unless params['q'].nil? || params['q'] == ''
-  else
+  unless @search_by.nil?
     @arrayitems = findbooks_with_parameter(@search_by)
   end 
   erb :search_page
