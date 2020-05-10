@@ -6,9 +6,10 @@
           <% id = book[0] %>
           <% title = book[1][1] %>
           <% img_link = book[1][0] %>
+          <% language = book[1][5] %>
           <li class="list-item">
             <%= erb '/books/book_card'.to_sym,
-              locals: { id: id, title: title, img_link: img_link } %>
+              locals: { id: id, title: title, img_link: img_link, language: language } %>
           </li>
         <% end %>
       </ul>

@@ -41,8 +41,8 @@ class DeployBooks
     array = []
     array << return_images(book) << return_any('title', book)
     array << return_any('subtitle', book) << return_any('authors', book)
-    array << return_any('description', book) << return_any('pageCount', book)
-    array << return_any('categories', book)
+    array << return_any('description', book)<< return_any('language', book)
+    array << return_any('categories', book) 
     array
   end
 
@@ -103,6 +103,10 @@ end
 get '/details?' do
   @id = params['id']
   erb :book_detail
+end
+
+get '/error?' do
+  params.to_s
 end
 
 post '/action' do

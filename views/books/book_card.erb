@@ -1,9 +1,13 @@
 <div class="book">
-  <a href="my_books?add=<%= id %>">
-    <img class="image-book" src="<%= img_link %>" alt="<% title %>" />
+  <a href="details?id=<%= id %>" class="book-title">
+  <%= title.split.length > 6 ? title.split[0..4].join(" ")+' ...' : title %>
   </a>
-  <div>
-    <a class="want-read" href="my_books?add=<%= id %>">Want to Read</a>
-  </div>
-  <a class="mark-read" href="">Mark as read</a>
+  <a title = "<%=title%>"href="details?id=<%= id %>">
+    <img class="image-book" src="<%= img_link %>" alt="<% title %>" />
+</a>
+<div>
+  <a class="want-read" href="my_books?add=<%= id %>">Want to Read</a>
+</div>
+<a class="mark-read" href="/action?action=edit&id=<%id%>">Mark as read</a>
+<span class="language"><%= language == 'en' ? 'English' : 'Spanish'  %></span>
 </div>

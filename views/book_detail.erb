@@ -1,16 +1,24 @@
-<% currentbook = Book.find(@id) %>
+<% book = CreateBook.new %>
+<% currentbook = book.see_book(@id) %>
 <div class="book-detail">
   <div class="book-logo">
-    <img src="<%= currentbook.image %>" />
-    <a href="" class="book-read">Want to Read</a>
+    <img src="<%= currentbook[:image] %>" />
+    <a href="my_books?add=<%= @id %>" class="book-read">Want to Read</a>
     <a href="" class="book-mark">Mark as read</a>
   </div>
   <div class="book-description">
-    <h1><%= currentbook.title %></h1>
-    <p class="book-author">by <%= currentbook.authors.join %></p>
-    <p class="book-text"><%= currentbook.description %></p>
-    <a href="https://play.google.com/store/books/details?id=<%= currentbook.id %> " class="book-buy">Buy for 63.36 PEN
-      <img src="assets/buy.svg">
+    <h1><%= currentbook[:title] %></h1>
+    <p class="book-author">by 
+      <% authors = currentbook[:authors] %>
+      <%= authors.class == Array ? authors.join : authors %></p>
+    <p class="book-text"><%= currentbook[:description] %></p>
+    <%  price = currentbook[:price] %>
+    <% path = "https://play.google.com/store/books/details?id="%>
+    <a href=" <%= price.class == String ? "/error?id=#{@id}&error=notsale" : path+@id %>" class="book-buy">
+      <%= price.class != String ? "BUY FOR #{price} PEN" : price  %>
+      <% unless price.class == String  %>
+        <img src="assets/buy.svg">
+      <% end %>
     </a>
   </div>
 </div>
