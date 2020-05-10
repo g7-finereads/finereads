@@ -64,3 +64,24 @@ body {
 .hero-content-button:hover {
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
+
+@media (max-width: 768px) {
+  .hero {
+    position: relative;
+    align-content: center;
+    justify-content: center;
+  }
+  .hero-img {
+    width: 100%;
+    opacity: 0.9;
+  }
+  .hero-content {
+    position: absolute;
+    align-self: center;
+    margin: 0 auto;
+  }
+  .hero-content h1,
+  .hero-content h2 {
+    color: #fffaf0;
+  }
+}
