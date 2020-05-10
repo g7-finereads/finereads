@@ -2,17 +2,22 @@
   text-align: center;
   margin: 20px auto;
 }
+
 .section-search h2 {
   margin-bottom: 15px;
 }
+
 .search-field {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05), 0px 10px 15px rgba(0, 0, 0, 0.1);
   width: fit-content;
   margin: 0 auto;
 }
+
 .search {
   display: flex;
+  justify-content: center;
 }
+
 .search input[type="search"] {
   min-width: 250px;
   width: 400px;
@@ -23,12 +28,14 @@
   line-height: 22px;
   padding: 5px;
 }
+
 .search input[type="search"]::placeholder {
   font-family: "Nunito";
   font-size: 16px;
   line-height: 22px;
   color: #4a5568;
 }
+
 .search-icon {
   background: #f6ad55;
   width: 40px;
@@ -45,17 +52,20 @@ input[type="submit"] {
   margin-left: -20px;
   cursor: pointer;
 }
+
 .fa-search {
   position: absolute;
   height: 40px;
   width: 40px;
   display: flex;
 }
+
 .search i {
   display: flex;
   justify-content: center;
   font-size: 1.3em;
 }
+
 @media (max-width: 768px) {
   .search input[type="search"] {
     width: auto;
