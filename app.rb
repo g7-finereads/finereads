@@ -41,8 +41,8 @@ class DeployBooks
     array = []
     array << return_images(book) << return_any('title', book)
     array << return_any('subtitle', book) << return_any('authors', book)
-    array << return_any('description', book)<< return_any('language', book)
-    array << return_any('categories', book) 
+    array << return_any('description', book) << return_any('language', book)
+    array << return_any('categories', book)
     array
   end
 
@@ -85,6 +85,7 @@ end
 
 get '/my_books' do
   @books = params['add'].nil? ? Book.all : savebook(params['add'])
+  @status = params['status'] unless params['status'].nil?
   erb :my_books
 end
 

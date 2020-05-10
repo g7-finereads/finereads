@@ -8,6 +8,6 @@
 <div>
   <a class="want-read" href="my_books?add=<%= id %>">Want to Read</a>
 </div>
-<a class="mark-read" href="/action?action=edit&id=<%id%>">Mark as read</a>
+<a class="mark-read" href="my_books?add=<%= id %>&status=Readed">Mark as read</a>
 <span class="language"><%= language == 'en' ? 'English' : 'Spanish'  %></span>
 </div>

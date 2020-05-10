@@ -4,7 +4,7 @@
   <div class="book-logo">
     <img src="<%= currentbook[:image] %>" />
     <a href="my_books?add=<%= @id %>" class="book-read">Want to Read</a>
-    <a href="" class="book-mark">Mark as read</a>
+    <a href="my_books?add=<%= @id %>&status=Readed" class="book-mark">Mark as read</a>
   </div>
   <div class="book-description">
     <h1><%= currentbook[:title] %></h1>

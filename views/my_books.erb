@@ -13,7 +13,11 @@
       <%  id = book.id %>
       <%  title = book.title %>
       <%  authors = book.authors.join%>
-      <%  status = book.status.capitalize.gsub(/_/," ")%>
+      <% if @status.nil? %>
+        <%  status = book.status.capitalize.gsub(/_/," ")%>
+      <% else %>
+        <%= status = @status  %>
+      <% end %>
       <%  date = book.date%>
       <%= erb '/books/card_my_books'.to_sym, 
         locals: { cover: cover, title: title, authors: authors,
