@@ -4,11 +4,13 @@
   width: fit-content;
   margin: 70px auto;
 }
+
 .my-books-title {
   font-size: 36px;
   line-height: 49px;
   font-weight: normal;
 }
+
 .my-books-item {
   margin: 0 auto;
   display: grid;
@@ -18,25 +20,30 @@
   padding: 19px 0 12px 0;
   border-top: 1px solid rgba(113, 128, 150, 0.8);
 }
+
 .header {
   display: grid;
   margin-top: 14px;
   padding: 12px 0;
   grid-template-columns: 70px 184px 191px 95px 150px 54px;
 }
+
 .header span {
   text-align: center;
 }
+
 .header span.header-status,
 .header span.header-date,
 .header span.header-author {
   text-align: left;
   padding: 0 15px;
 }
+
 .image img {
   width: 70px;
   height: 105px;
 }
+
 .my-books-item p {
   font-size: 18px;
   line-height: 19px;
@@ -47,6 +54,7 @@
   display: flex;
   align-items: center;
 }
+
 .my-books-item span {
   color: #1a202c;
   padding: 0 6px;
@@ -54,13 +62,16 @@
   align-items: center;
   justify-content: center;
 }
+
 .icons {
   display: flex;
   align-items: center;
 }
+
 .icons a {
   cursor: pointer;
 }
+
 .icons a img {
   margin: 0 4px;
   width: 18px;
