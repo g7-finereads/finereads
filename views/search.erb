@@ -1,6 +1,7 @@
 <section class="section-search">
   <h2>Find your next book to read</h2>
-  <% search_by = ['All','Author', 'Publisher','Subject','ISBN' ] %>
+  <% search_by = {All: 'All' ,inauthor: 'Author', inpublisher: 'Publisher',
+  subject: 'Subject',isbn: 'ISBN'} %>
   <label for="search_by">Search By </label>
   <div class="search-field">
     <form action="/search?" method="get" class="search">
@@ -9,12 +10,12 @@
         type="search"
         name="q"
         id="search"
-        placeholder="Search a book by <%= @option%>..."
+        placeholder="Search a book by ..."
       />
           <select id="search_by" name ="search_by">
-            <% search_by.each do |option| %>
-              <option value="<%= option %>">
-                <%= option %>
+            <% search_by.each do |key, value| %>
+              <option value="<%= key %>">
+                <%= value %>
               </option>
             <% end %>
           </select>

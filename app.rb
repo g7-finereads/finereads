@@ -12,6 +12,13 @@ class Searchbook
     @base_url = "https://www.googleapis.com/books/v1/volumes?q=#{query}"
   end
 
+  def search_with_parameter(parameter)
+    base_url = "https://www.googleapis.com/books/v1/volumes?q=#{@query}+#{parameter}:#{@query}"
+    result = HTTP.headers(accept: 'application/json').get(base_url)
+    books = result
+    books.parse
+  end
+
   def search
     result = HTTP.headers(accept: 'application/json').get(@base_url)
     books = result
@@ -64,6 +71,15 @@ helpers do
     @arrayitems
   end
 
+  def findbooks_with_parameter(parameter)
+    test = Searchbook.new(params['q'].gsub(/\s+/, '%20'))
+    array = test.search_with_parameter(parameter)['items']
+    deploy = DeployBooks.new(array)
+    @arrayitems = deploy.info_books.to_a
+    @arrayitems.slice!(8..-1)
+    @arrayitems
+  end
+
   def savebook(id)
     CreateBook.new.add_book(id)
     Book.all
@@ -79,7 +95,12 @@ get '/' do
 end
 
 get '/search' do
-  @arrayitems = findbooks unless params['q'].nil? || params['q'] == ''
+  @search_by = params['search_by']
+  if @search_by == 'All'
+    @arrayitems = findbooks unless params['q'].nil? || params['q'] == ''
+  else
+    @arrayitems = findbooks_with_parameter(@search_by)
+  end 
   erb :search_page
 end
 

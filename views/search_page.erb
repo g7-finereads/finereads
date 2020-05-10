@@ -1,6 +1,5 @@
-<%  @arrayitems %>
 <%= erb :search %>
-<%= erb :list_books %>
+<%= erb :list_books,locals:{search_by: @search_by}%>
 <% if @arrayitems.nil? %>
   <div class ="waiting">
     <img src="/images/waiting.png"/>
