@@ -1,14 +1,17 @@
-<div class="list-books">
-  <% unless @arrayitems.nil? %>
+<% unless @arrayitems.nil? %>
+  <div class="list-books">
     <% @arrayitems.each_slice(4) do |row|%>
       <ul class="row">
         <% row.each do |book| %>
           <% id = book[0] %>
           <% title = book[1][1] %>
           <% img_link = book[1][0] %>
-          <li class="list-item"><%= erb '/books/book_card'.to_sym,locals:{id: id, title: title, img_link: img_link} %></li>
+          <li class="list-item">
+            <%= erb '/books/book_card'.to_sym,
+              locals: { id: id, title: title, img_link: img_link } %>
+          </li>
         <% end %>
       </ul>
     <% end %>
   </div>
-<%end %>
+<% end %>
