@@ -1,12 +1,17 @@
 /* This is the main sheet, all styles include here */
 
-@import url("books.css");
-@import url("https://fonts.googleapis.com/css?family=Nunito:300,400,600,700&display=swap");
-@import url("search.css");
-@import url("index.css");
-@import url("book_detail.css");
-@import url("book-edit.css");
-@import url("mybooks.css");
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200;400&display=swap');
+
+@import url('layout.css');
+@import url('books.css');
+@import url('search.css');
+@import url('index.css');
+@import url('book-detail.css');
+@import url('book-edit.css');
+@import url('mybooks.css');
+@import url('footer.css');
 
 * {
   margin: 0;
@@ -15,7 +20,7 @@
 }
 
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 a {
