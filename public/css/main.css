@@ -11,6 +11,7 @@
 @import url('book-detail.css');
 @import url('book-edit.css');
 @import url('mybooks.css');
+@import url('error.css');
 
 * {
   margin: 0;
@@ -24,4 +25,8 @@ body {
 
 a {
   text-decoration: none;
+}
+
+.error{
+  margin: 200px auto;
 }

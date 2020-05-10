@@ -55,6 +55,7 @@ class DeployBooks
 
   def info_books
     final = {}
+    return nil if @items.nil?
     @items.each { |book| final[book['id']] = return_all(book) }
     final
   end
@@ -96,10 +97,9 @@ end
 
 get '/search' do
   @search_by = params['search_by']
-    @arrayitems = findbooks unless params['q'].nil? || params['q'] == ''
-  unless @search_by.nil?
-    @arrayitems = findbooks_with_parameter(@search_by)
-  end 
+  unless params['q'].nil? || params['q'] == ''
+    @arrayitems = findbooks_with_parameter(@search_by) unless @search_by == ''
+  end
   erb :search_page
 end
 
@@ -127,7 +127,7 @@ get '/details?' do
 end
 
 get '/error?' do
-  params.to_s
+  erb '/books/error-book'.to_sym
 end
 
 post '/action' do

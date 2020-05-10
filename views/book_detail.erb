@@ -14,7 +14,7 @@
     <p class="book-text"><%= currentbook[:description] %></p>
     <%  price = currentbook[:price] %>
     <% path = "https://play.google.com/store/books/details?id="%>
-    <a href=" <%= price.class == String ? "/error?id=#{@id}&error=notsale" : path+@id %>" class="book-buy">
+    <a href=" <%= price.class == String ? "/error?id=#{@id}" : path+@id %>" class="book-buy">
       <%= price.class != String ? "BUY FOR #{price} PEN" : price  %>
       <% unless price.class == String  %>
         <img src="assets/buy.svg">
