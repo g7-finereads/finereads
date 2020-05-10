@@ -78,12 +78,8 @@ get '/' do
   erb :index
 end
 
-get '/books' do
-  @arrayitems = findbooks unless params['q'].nil? || params['q'] == ''
-  erb :search_page
-end
-
 get '/search' do
+  @arrayitems = findbooks unless params['q'].nil? || params['q'] == ''
   erb :search_page
 end
 
