@@ -8,14 +8,16 @@
 }
 
 .search-field {
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05), 0px 10px 15px rgba(0, 0, 0, 0.1);
   width: fit-content;
   margin: 0 auto;
 }
 
 .search {
-  display: flex;
   justify-content: center;
+}
+.search_book {
+  display: flex;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05), 0px 10px 15px rgba(0, 0, 0, 0.1);
 }
 
 .search input[type="search"] {
@@ -51,6 +53,7 @@ input[type="submit"] {
   position: absolute;
   margin-left: -20px;
   cursor: pointer;
+  position: relative;
 }
 
 .fa-search {
@@ -76,11 +79,27 @@ input[type="submit"] {
   font-size: 16px;
   font-family: "Nunito", sans-serif;
   padding: 7px 12px;
-  margin: 7px 20px 12px 0;
+  position: sticky;
+  margin-left: -150px;
+  right: 0;
 }
 
 @media (max-width: 768px) {
   .search input[type="search"] {
     width: auto;
+  }
+  .search-field {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  .search,
+  .search_book {
+    width: 333px;
+    display: flex;
+    justify-content: space-between;
+  }
+  #search_by {
+    margin-left: -70px;
   }
 }
