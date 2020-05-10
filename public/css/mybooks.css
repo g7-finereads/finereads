@@ -1,7 +1,7 @@
 .list-mybooks {
   display: grid;
   grid-template-rows: auto;
-  width: fit-content;
+  text-align: center;
   margin: 70px auto;
 }
 
@@ -23,7 +23,7 @@
 
 .header {
   display: grid;
-  margin-top: 14px;
+  margin: 14px auto auto;
   padding: 12px 0;
   grid-template-columns: 70px 184px 191px 95px 150px 54px;
 }
