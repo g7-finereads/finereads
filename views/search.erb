@@ -1,5 +1,16 @@
 <section class="section-search">
   <h2>Find your next book to read</h2>
+  <% search_by = ['All','Author', 'Publisher','Subject','ISBN' ] %>
+  <form method="post">
+    <label for="search_by">Search By </label>
+    <select id="search_by" name ="search_by">
+      <% search_by.each do |option| %>
+        <option value="<%= option %>">
+          <%= option %>
+        </option>
+      <% end %>
+    </select>
+  </form>
   <div class="search-field">
     <form action="/search?" method="get" class="search">
       <input
@@ -8,10 +19,10 @@
         id="search"
         placeholder="Search a book..."
       />
-      <div class="search-icon">
-        <i class="fas fa-search"></i>
-        <input type="submit"  value="" />
-      </div>
-    </form>
-   </div>
-</section>
+        <div class="search-icon">
+          <i class="fas fa-search"></i>
+          <input type="submit"  value="" />
+        </div>
+      </form>
+    </div>
+  </section>

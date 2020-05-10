@@ -4,15 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="shortcut icon" href="/images/waiting.png" type="image/x-icon" />
     <title>Finereads</title>
     <link rel="stylesheet" href="/css/main.css">
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" data-auto-replace-svg="nest"></script>
   </head>
   <body>
     <%= erb :header unless request.path_info == '/' %>
-      
     <%= yield %>
-
     <%= erb :footer unless request.path_info == '/' %>
   </body>
 </html>

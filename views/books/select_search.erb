@@ -1,0 +1,8 @@
+<% array_options = ['All','Author', 'Publisher','Subject','ISBN' ] %>
+<form method="post">
+  <label for="search_by">Search By </label>
+  <select id="search_by" name ="search_by">
+    <% array_options.each do |option| %>
+      <option value="<%= option %>"><%= option %></option>
+    <% end %>
+  </select>

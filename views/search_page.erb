@@ -1,3 +1,9 @@
 <%  @arrayitems %>
 <%= erb :search %>
 <%= erb :list_books %>
+<% if @arrayitems.nil? %>
+  <div class ="waiting">
+    <img src="/images/waiting.png"/>
+    <h3>Waiting for a query</h3>
+  </div>
+<% end %>
