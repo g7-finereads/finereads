@@ -13,7 +13,7 @@ class Book < LazyRecord
     @image = image
     @date = Time.now.strftime('%F')
     @notes = ''
-    @status = 'not_read'
+    @status = 'Not read'
   end
 end
 
