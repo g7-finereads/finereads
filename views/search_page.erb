@@ -1,8 +1,22 @@
 <%= erb :search %>
-<%= erb :list_books,locals:{search_by: @search_by}%>
+<%= erb :list_books%>
 <% if @arrayitems.nil? || @arrayitems.empty? %>
   <div class ="waiting">
     <img src="/images/waiting.png"/>
     <h3>Waiting for a query</h3>
   </div>
+<% end %>
+<% unless page.nil? %>
+<div class="navigation-buttons">
+  <% if (page - 1).positive? %>
+    <a class="back_page" href="/search?q=harry+potter&search_by=All&page=<%= page -1  %>">
+      Back Page
+    </a>
+  <% end %>
+  <% if @totalitems.positive?%>
+    <a class="load_more" href="/search?q=harry+potter&search_by=All&page=<%= page + 1 %>">
+      Load More
+    </a>
+  <% end %>
+</div>
 <% end %>

@@ -9,20 +9,16 @@ require_relative 'books'
 class Searchbook
   def initialize(query)
     @query = query
+    @totalitems = nil
     @base_url = "https://www.googleapis.com/books/v1/volumes?q=#{query}"
+    @max = 'maxResults=8'
   end
 
-  def search_with_parameter(parameter)
-    base_url = "https://www.googleapis.com/books/v1/volumes?q=#{@query}+#{parameter}:#{@query}"
-    result = HTTP.headers(accept: 'application/json').get(base_url)
-    books = result
-    books.parse
-  end
-
-  def search
-    result = HTTP.headers(accept: 'application/json').get(@base_url)
-    books = result
-    books.parse
+  def search_with_parameter(parameter = nil, index = 0)
+    parameter = parameter == "All" ? '' : "+#{parameter}:#{@query}"
+    base = "#{@base_url}#{parameter}&startIndex=#{index}&#{@max}"
+    result = HTTP.headers(accept: 'application/json').get(base).parse
+    [result, result['totalItems']]
   end
 end
 
@@ -63,22 +59,20 @@ end
 
 helpers do
   set :static_cache_control, [:public, max_age: 1]
-  def findbooks
-    test = Searchbook.new(params['q'].gsub(/\s+/, '%20'))
-    array = test.search['items']
-    deploy = DeployBooks.new(array)
+
+  def findbooks_with_parameter(parameter, page)
+    book = Searchbook.new(params['q'].gsub(/\s+/, '%20'))
+    array = book.search_with_parameter(parameter, page)
+    array_items = array[0]['items']
+    deploy = DeployBooks.new(array_items)
     @arrayitems = deploy.info_books.to_a
-    @arrayitems.slice!(8..-1)
-    @arrayitems
+    [@arrayitems, array[1]]
   end
 
-  def findbooks_with_parameter(parameter)
-    test = Searchbook.new(params['q'].gsub(/\s+/, '%20'))
-    array = test.search_with_parameter(parameter)['items']
-    deploy = DeployBooks.new(array)
-    @arrayitems = deploy.info_books.to_a
-    @arrayitems.slice!(8..-1)
-    @arrayitems
+  def num_items(parameter, page)
+    book = Searchbook.new(params['q'].gsub(/\s+/, '%20'))
+    array = book.search_with_parameter(parameter, page)
+    array['totalItems'].to_i
   end
 
   def savebook(id)
@@ -89,6 +83,7 @@ helpers do
   def deletebook(id)
     Book.delete(id)
   end
+
 end
 
 get '/' do
@@ -96,11 +91,18 @@ get '/' do
 end
 
 get '/search' do
-  @search_by = params['search_by']
-  unless params['q'].nil? || params['q'] == ''
-    @arrayitems = findbooks_with_parameter(@search_by) unless @search_by == ''
+  unless params.empty?
+    page = params['page'].to_i
+    index = page == 1 ? 0 : page * 8
+    @search_by = params['search_by']
+    findbooks = findbooks_with_parameter(@search_by, index)
+    unless params['q'].nil? || params['q'] == ''
+      @arrayitems = findbooks[0]
+    end
+    @totalitems = findbooks[1]
   end
-  erb :search_page
+  erb :search_page,locals:{page: page}
+
 end
 
 get '/my_books' do

@@ -1,6 +1,6 @@
 <div class="book">
   <a href="details?id=<%= id %>" class="book-title">
-  <%= title.split.length > 6 ? title.split[0..4].join(" ")+' ...' : title %>
+  <%= title.split.length > 6 ? title.split[0..4].join(" ").capitalize+' ...' : title.capitalize %>
   </a>
   <a title = "<%=title%>"href="details?id=<%= id %>">
     <img class="image-book" src="<%= img_link %>" alt="<% title %>" />

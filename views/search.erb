@@ -2,7 +2,6 @@
   <h2>Find your next book to read</h2>
   <% search_by = {All: 'All' ,inauthor: 'Author', inpublisher: 'Publisher',
   subject: 'Subject',isbn: 'ISBN'} %>
-  <label for="search_by">Search By </label>
   <div class="search-field">
     <form action="/search?" method="get" class="search">
       <div class="search_book">
@@ -19,6 +18,8 @@
               </option>
             <% end %>
           </select>
+      <% page = params['page'].nil? || params['page'].empty? ? 1 : params['page'] %>
+      <input type="hidden" name="page" value="<%= page %>" />
           <div class="search-icon">
             <i class="fas fa-search"></i>
             <input type="submit"  value="" />
